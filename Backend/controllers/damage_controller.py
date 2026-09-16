@@ -6,7 +6,6 @@ from algorithms.cost_estimation import estimate_cost
 damage_controller = Blueprint("damage_controller", __name__)
 
 
-# GET: Fetch all damage records
 @damage_controller.route("/damage", methods=["GET"])
 def get_damage():
 
@@ -34,7 +33,6 @@ def get_damage():
     return jsonify(damage_list)
 
 
-# POST: Add AI detected damage
 @damage_controller.route("/damage", methods=["POST"])
 def add_damage():
 
