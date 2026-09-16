@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from models.database import get_connection
+from algorithms.models.database import get_connection
 from algorithms.priority import calculate_priority
 from algorithms.cost_estimation import estimate_cost
 
