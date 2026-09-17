@@ -2,19 +2,115 @@
 <html>
 <head>
     <title>Road Damage Detection System</title>
+    <style>
+        /* Is part se aapka page dekhne me sundar aur modern lagega */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        input[type="file"] {
+            margin: 20px 0;
+            padding: 10px;
+            border: 2px dashed #3498db;
+            border-radius: 6px;
+            width: 90%;
+            cursor: pointer;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            margin-top: 25px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+    </style>
 </head>
-
 <body>
 
-    <h1>🚗 Road Damage Detection System</h1>
+    <div class="container">
+        <h1>🚗 Road Damage Detection System</h1>
+        <p>Upload a road image to detect potholes or damage.</p>
+        
+        <!-- Image select karne ke liye (yahan id="imageInput" joda hai) -->
+        <input type="file" id="imageInput" accept="image/*">
+        
+        <!-- Button dabane par kaam shuru ho (yahan id="detectBtn" joda hai) -->
+        <button id="detectBtn">Detect Damage</button>
+        
+        <!-- Yahan AI model se aane wala result (pothole mila ya nahi) dikhayi dega -->
+        <div id="result"></div>
+    </div>
 
-    <p>Upload a road image to detect potholes and cracks.</p>
+    <script>
+        // Yeh code button click hone par image ko aapke AI server (Backend) par bhejega
+        document.getElementById('detectBtn').addEventListener('click', async () => {
+            const fileInput = document.getElementById('imageInput');
+            const resultDiv = document.getElementById('result');
+            
+            if (fileInput.files.length === 0) {
+                resultDiv.innerHTML = "<span style='color: red;'>Kripya pehle ek image select karein!</span>";
+                return;
+            }
 
-    <input type="file" accept="image/*">
+            resultDiv.innerHTML = "Processing image... Please wait...";
+            
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
 
-    <br><br>
+            try {
+                // Yahan aapko apne Python/Flask backend ka link dalna hoga
+                const response = await fetch('http://127.0.0', {
+                    method: 'POST',
+                    body: formData
+                });
 
-    <button>Detect Damage</button>
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<span style='color: green;'>Result: ${data.status}</span>`;
+                } else {
+                    resultDiv.innerHTML = "<span style='color: red;'>Server se connect karne me dikkat aayi.</span>";
+                }
+            } catch (error) {
+                resultDiv.innerHTML = "<span style='color: red;'>Error: Aapka Python server chalu nahi hai ya URL galat hai.</span>";
+                console.error(error);
+            }
+        });
+    </script>
 
 </body>
 </html>
