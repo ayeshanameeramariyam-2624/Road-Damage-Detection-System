@@ -1,9 +1,20 @@
-document.querySelector("button").addEventListener("click", function () {
-    const fileInput = document.querySelector('input[type="file"]');
+const fileInput = document.getElementById("imageInput");
+const detectBtn = document.getElementById("detectBtn");
+const resultDiv = document.getElementById("result");
 
-    if (fileInput.files.length === 0) {
-        alert("Please upload a road image first.");
+fileInput.addEventListener("change", function () {
+    if (fileInput.files.length > 0) {
+        resultDiv.innerHTML = "Image selected successfully.";
     } else {
-        alert("Image uploaded successfully! Damage detection will be connected soon.");
+        resultDiv.innerHTML = "";
     }
+});
+
+detectBtn.addEventListener("click", function () {
+    if (fileInput.files.length === 0) {
+        resultDiv.innerHTML = "Please select a road image first.";
+        return;
+    }
+
+    resultDiv.innerHTML = "Image selected. Ready for detection.";
 });
