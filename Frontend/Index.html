@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Road Damage Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🚗 Road Damage Dashboard</h1>
+
+        <div class="dashboard">
+
+            <div class="card">
+                <h3>Total Damage</h3>
+                <p id="totalDamage">0</p>
+            </div>
+
+            <div class="card">
+                <h3>🕳️ Potholes</h3>
+                <p id="potholes">0</p>
+            </div>
+
+            <div class="card">
+                <h3>⚠️ High Priority</h3>
+                <p id="highPriority">0</p>
+            </div>
+
+            <div class="card">
+                <h3>💰 Estimated Cost</h3>
+                <p id="totalCost">₹0</p>
+            </div>
+
+        </div>
+
+        <h2>Damage Records</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Damage Type</th>
+                    <th>Severity</th>
+                    <th>Location</th>
+                    <th>Priority</th>
+                    <th>Estimated Cost</th>
+                </tr>
+            </thead>
+
+            <tbody id="damageTable">
+                <tr>
+                    <td colspan="6">Loading data...</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
