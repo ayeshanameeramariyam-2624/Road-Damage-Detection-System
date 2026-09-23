@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Road Damage Detection System</title>
+    <title>Road Damage Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,19 +9,26 @@
 
     <div class="container">
 
-        <h1>🚗 Road Damage Detection System</h1>
+        <h1>🚗 Road Damage Dashboard</h1>
 
-        <p>Upload a road image to detect potholes or damage.</p>
+        <p>Road damage detection and management system</p>
 
-        <input type="file" id="imageInput" accept="image/*">
+        <div class="dashboard">
 
-        <button id="detectBtn">Detect Damage</button>
+            <div class="card">
+                <h3>Total Damage</h3>
+                <p id="totalDamage">0</p>
+            </div>
 
-        <div id="result"></div>
+            <div class="card">
+                <h3>🕳️ Potholes</h3>
+                <p id="potholes">0</p>
+            </div>
 
-    </div>
+            <div class="card">
+                <h3>⚠️ High Priority</h3>
+                <p id="highPriority">0</p>
+            </div>
 
-    <script src="script.js"></script>
-
-</body>
-</html>
+            <div class="card">
+                <h3>💰 Estimated Cost</h3>
