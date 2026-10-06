@@ -1,34 +1,64 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Road Damage Dashboard</title>
     <link rel="stylesheet" href="style.css">
-</head>
+</head><body><div class="container">
 
-<body>
+    <h1>🚗 Road Damage Dashboard</h1>
 
-    <div class="container">
+    <p>Road damage detection and management system</p>
 
-        <h1>🚗 Road Damage Dashboard</h1>
+    <div class="dashboard">
 
-        <p>Road damage detection and management system</p>
+        <div class="card">
+            <h3>Total Damage</h3>
+            <p id="totalDamage">0</p>
+        </div>
 
-        <div class="dashboard">
+        <div class="card">
+            <h3>🕳️ Potholes</h3>
+            <p id="potholes">0</p>
+        </div>
 
-            <div class="card">
-                <h3>Total Damage</h3>
-                <p id="totalDamage">0</p>
-            </div>
+        <div class="card">
+            <h3>⚠️ High Priority</h3>
+            <p id="highPriority">0</p>
+        </div>
 
-            <div class="card">
-                <h3>🕳️ Potholes</h3>
-                <p id="potholes">0</p>
-            </div>
+        <div class="card">
+            <h3>💰 Estimated Cost</h3>
+            <p id="totalCost">₹0</p>
+        </div>
 
-            <div class="card">
-                <h3>⚠️ High Priority</h3>
-                <p id="highPriority">0</p>
-            </div>
+    </div>
 
-            <div class="card">
-                <h3>💰 Estimated Cost</h3>
+    <h2>Damage Records</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Damage Type</th>
+                <th>Severity</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Priority</th>
+                <th>Estimated Cost</th>
+            </tr>
+        </thead>
+
+        <tbody id="damageTable">
+            <tr>
+                <td colspan="7">No damage records available</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
